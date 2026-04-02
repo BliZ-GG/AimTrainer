@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>aim-trainer</title>
+    <link rel="stylesheet" href="src/style.css">
+  </head>
+  <body>
+    <canvas class="threejs" defer></canvas>
+    <script type="module" src="/src/Start.js"></script>
+
+    <div id="fps-counter">FPS: 0</div>
+    <div id="timer">60s</div>
+    <div id="result"></div>
+    <div id="score">Score: 0</div>
+    <div id="crosshair"></div>
+
+    <div id="menu">
+      <h1>3D Aim Trainer</h1>
+      <button id="flick-btn">Flick Training</button>
+      <button id="tracking-btn">Tracking Training</button>
+      <button id="settings-btn">Indstillinger</button>
+    </div>
+
+    <div id="settings" class="hidden">
+      <h2>Indstillinger</h2>
+
+      <div class="settings-row">
+        <label>FPS Cap</label>
+        <input id="fps-input" type="number" min="0" placeholder="0 = fri">
+      </div>
+
+      <div class="settings-row">
+        <label>Sensitivity</label>
+        <input id="sens-input" type="number" min="0.1" max="10" step="0.1">
+      </div>
+
+      <div class="settings-row">
+        <label>FOV</label>
+        <input id="fov-input" type="number" min="50" max="120">
+      </div>
+
+      <div class="settings-row">
+        <label>Volume (0-1)</label>
+        <input id="vol-input" type="number" min="0" max="1" step="0.1">
+      </div>
+
+      <div class="settings-row">
+        <label>Vis FPS</label>
+        <input id="show-fps-input" type="checkbox">
+      </div>
+
+      <button id="settings-back-btn">Tilbage</button>
+    </div>
+
+  </body>
+</html>
