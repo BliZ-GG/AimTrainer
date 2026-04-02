@@ -7,7 +7,7 @@ export class BaseLevel {
     constructor() {
         this.scene = new THREE.Scene();
         this.score = 0;
-        this.timeLeft = 30;
+        this.timeLeft = 60;
         this.isFinished = false;
         this.#initControls();
         this.scene.add(camera);

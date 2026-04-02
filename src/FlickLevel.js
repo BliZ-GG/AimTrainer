@@ -1,9 +1,10 @@
 import * as THREE from 'three';
 import { raycaster, screenCenter, camera } from './main.js';
 import { BaseLevel } from './BaseLevel.js';
+import { audio } from './Audio.js';
 
 export class FlickLevel extends BaseLevel {
-    constructor(){
+    constructor() {
         super();
         this.shots = 0;
         this.hits = 0;
@@ -25,12 +26,12 @@ export class FlickLevel extends BaseLevel {
         });
     }
 
-    spawnCube(cube){
+    spawnCube(cube) {
         cube.position.set(
             (Math.random() - 0.5) * 10,
             (Math.random() - 0.5) * 5,
             (Math.random() - 0.5) * 5
-    );
+        );
     }
 
     shoot() {
@@ -38,15 +39,19 @@ export class FlickLevel extends BaseLevel {
         if (!document.pointerLockElement) return;
 
         this.shots++;
+        audio.playShoot();
         raycaster.setFromCamera(screenCenter, camera);
         const intersects = raycaster.intersectObjects(this.cubes);
 
         if (intersects.length > 0) {
             this.hits++;
+            audio.playHit();
             this.addScore();
             this.spawnCube(intersects[0].object);
         } else {
+            if(this.score>0){
             this.removeScore();
+            };
         }
     }
 
@@ -54,4 +59,4 @@ export class FlickLevel extends BaseLevel {
         if (this.shots === 0) return 0;
         return Math.round((this.hits / this.shots) * 100);
     }
-} 
+}
